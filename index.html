@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Offline Office Toolkit - ten private browser tools that work without internet</title>
+    <meta
+      name="description"
+      content="Ten small office tools (PDF, images, spreadsheets, QR codes, calculators and more) that run in your browser, work offline and never upload your files."
+    />
+    <link rel="stylesheet" href="shared/theme.css" />
+    <link rel="stylesheet" href="site/launcher.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <h1>Offline Office Toolkit</h1>
+        <p>
+          Ten everyday office tools that run entirely in your browser. Your files are never uploaded, nothing needs installing, and
+          everything keeps working with no internet.
+        </p>
+        <p>
+          <span class="badge">Free</span> <span class="badge">Open source (MIT)</span> <span class="badge">No tracking</span>
+          <span class="badge">Works offline</span>
+        </p>
+      </header>
+
+      <div class="card">
+        <label for="search">Find a tool</label>
+        <input class="search" type="search" id="search" placeholder="Try: pdf, excel, qr, invoice..." autocomplete="off" />
+      </div>
+
+      <div class="tool-grid" id="tool-grid"></div>
+      <p class="hint" id="no-results" hidden>No tool matches that search.</p>
+
+      <section class="card offline" aria-labelledby="h-offline">
+        <h2 id="h-offline">Using it without internet</h2>
+        <ol class="steps">
+          <li>
+            Download this project as a ZIP (on GitHub: green <strong>Code</strong> button, then <strong>Download ZIP</strong>) and unzip it.
+          </li>
+          <li>Open <code>index.html</code> in the unzipped folder with Chrome, Edge, Firefox or Safari.</li>
+          <li>
+            Pick a tool. That's it - you can now disconnect from the internet. You can also copy a single tool's folder and use it on its
+            own.
+          </li>
+        </ol>
+      </section>
+
+      <footer class="site">MIT licensed - see the README for hosting, contributing and security notes.</footer>
+    </main>
+
+    <script src="site/tools-data.js"></script>
+    <script src="site/launcher.js"></script>
+  </body>
+</html>

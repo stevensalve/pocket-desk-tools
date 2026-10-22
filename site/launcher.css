@@ -1,0 +1,70 @@
+/* Launcher page styles (the shared theme is loaded first). */
+.hero {
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 {
+  margin: 0 0 0.25rem;
+  font-size: 2rem;
+}
+
+.hero p {
+  margin: 0.25rem 0;
+  max-width: 46rem;
+  color: var(--muted);
+}
+
+.tool-grid {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  margin-top: 1rem;
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem;
+  color: inherit;
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.tool-card:hover {
+  border-color: var(--primary);
+}
+
+.tool-card .num {
+  display: inline-grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-text);
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.tool-card strong {
+  font-size: 1.1rem;
+}
+
+.tool-card small {
+  margin-top: auto;
+  color: var(--muted);
+}
+
+.steps {
+  padding-left: 1.2rem;
+}
+
+.search {
+  max-width: 24rem;
+}
+
+.offline {
+  margin-top: 1.5rem;
+}

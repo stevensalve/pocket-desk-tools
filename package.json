@@ -1,0 +1,49 @@
+{
+  "name": "offline-office-toolkit",
+  "version": "1.0.0",
+  "description": "Ten small, privacy-friendly office tools that run in the browser and work fully offline.",
+  "private": true,
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "vendor": "node scripts/vendor.mjs",
+    "sync": "node scripts/sync-shared.mjs",
+    "check:sync": "node scripts/sync-shared.mjs --check",
+    "check:offline": "node scripts/check-offline.mjs",
+    "test": "node scripts/run-tests.mjs",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "serve": "node scripts/serve.mjs",
+    "verify": "npm run check:sync && npm run check:structure && npm run check:offline && npm run lint && npm run format:check && npm test",
+    "check:structure": "node scripts/check-structure.mjs",
+    "build": "node scripts/build-site.mjs",
+    "new-tool": "node scripts/new-tool.mjs",
+    "export-tool": "node scripts/export-tool.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "jsbarcode": "3.12.3",
+    "pdf-lib": "1.17.1",
+    "pdfjs-dist": "3.11.174",
+    "prettier": "^3.3.0",
+    "qrcode-generator": "2.0.4",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  },
+  "keywords": [
+    "offline",
+    "privacy",
+    "pdf",
+    "excel",
+    "csv",
+    "qr-code",
+    "invoice",
+    "browser-tools",
+    "no-build"
+  ]
+}
