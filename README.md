@@ -1,7 +1,7 @@
-# Offline Office Toolkit
+# Pocket Desk Tools
 
-**Ten small, private office tools that run in your browser and keep working with no internet.**
-Merge PDFs, compress photos, clean spreadsheets, make QR codes, create invoices, sign documents - without uploading a single file to someone else's server.
+**Ten small, private desk tools that run in your browser and keep working with no internet.**
+Mail-merge letters, redact PDFs, turn meeting notes into to-dos, plan meetings across time zones, make passwords, print calendars, tidy scans, compare spreadsheets, sketch diagrams and see what a meeting costs - without uploading a single file to someone else's server.
 
 - **Private** - everything runs on your own computer. Nothing is uploaded, tracked or stored remotely.
 - **Offline** - download once, use forever. No installation, no account, no subscription.
@@ -14,18 +14,18 @@ Merge PDFs, compress photos, clean spreadsheets, make QR codes, create invoices,
 
 Each tool lives in its own self-contained folder under [`tools/`](tools/) with its own README, license and tests. Any folder can be copied, hosted or published on its own.
 
-| #   | Tool                                            | What it does                                                    | Replaces                  |
-| --- | ----------------------------------------------- | --------------------------------------------------------------- | ------------------------- |
-| 1   | [PDF Toolkit](tools/pdf-toolkit/)               | Merge, split, rotate, extract and delete PDF pages              | iLovePDF, Smallpdf        |
-| 2   | [Image Tools](tools/image-tools/)               | Compress, resize, crop, convert photos; images to PDF           | TinyPNG, Squoosh          |
-| 3   | [Sheet Cleaner](tools/sheet-cleaner/)           | Clean Excel/CSV, remove duplicates, compare sheets, VLOOKUP     | manual Excel clean-up     |
-| 4   | [File Converter](tools/file-converter/)         | CSV, Excel and JSON in any direction; text to PDF               | online converters         |
-| 5   | [QR & Barcode Maker](tools/qr-barcode-maker/)   | QR codes (link, Wi-Fi, contact, e-mail, SMS) and barcodes       | QR sites with trackers    |
-| 6   | [Text Toolkit](tools/text-toolkit/)             | Case, word count, list clean-up, find/replace, compare, extract | word counters, diff sites |
-| 7   | [Office Calculators](tools/office-calculators/) | Percentage, EMI, GST/VAT, dates, units, interest, margin        | assorted calculators      |
-| 8   | [Document Generator](tools/doc-generator/)      | Invoices, receipts and letters as PDFs                          | invoice generator sites   |
-| 9   | [PDF Fill & Sign](tools/pdf-fill-sign/)         | Fill forms, type on PDFs, tick boxes, sign                      | free e-signature tiers    |
-| 10  | [Focus Desk](tools/focus-desk/)                 | To-do list, Kanban board, focus timer, notes                    | to-do and Pomodoro apps   |
+| #   | Tool                                                    | What it does                                                                     | Replaces                          |
+| --- | ------------------------------------------------------- | -------------------------------------------------------------------------------- | --------------------------------- |
+| 1   | [Mail Merge](tools/mail-merge/)                         | A personalised PDF or e-mail text for every spreadsheet row                      | paid mail-merge add-ons           |
+| 2   | [PDF Redact & Stamp](tools/pdf-redact-stamp/)           | Permanently black out text, add watermarks and page numbers                      | online redaction sites            |
+| 3   | [Meeting Actions](tools/meeting-actions/)               | Meeting notes to action items, owners, due dates, decisions, calendar file       | AI note-takers that upload notes  |
+| 4   | [Timezone Planner](tools/timezone-planner/)             | Find a meeting time that suits every city; copy a local-times invitation         | world-clock websites              |
+| 5   | [Password & ID Generator](tools/password-id-generator/) | Passwords, passphrases, PINs, UUIDs and tokens from secure randomness            | online password generators        |
+| 6   | [Calendar & Planner Maker](tools/calendar-planner/)     | Printable monthly, yearly and weekly planner PDFs with your holidays             | calendar template sites           |
+| 7   | [Scan Organiser](tools/scan-organiser/)                 | Phone photos to a tidy PDF: crop, rotate, clean up, reorder                      | phone scanner apps                |
+| 8   | [Spreadsheet Diff](tools/sheet-diff/)                   | See what changed between two Excel/CSV files                                     | manual eyeballing, paid diff apps |
+| 9   | [Diagram Sketcher](tools/diagram-sketcher/)             | Flowcharts and org charts; build a tree from an indented outline; SVG/PNG export | account-based diagram tools       |
+| 10  | [Meeting Cost Timer](tools/meeting-cost-timer/)         | Live cost of a meeting, yearly cost of a recurring one, private log              | meeting-cost websites             |
 
 The launcher page ([`index.html`](index.html)) lists all ten with a search box.
 
@@ -45,7 +45,7 @@ Requirements: [Node.js](https://nodejs.org) 22 or newer (only for tests and tool
 
 ```bash
 git clone <this-repository-url>
-cd offline-office-toolkit
+cd pocket-desk-tools
 npm install          # dev tooling only: tests, lint, formatter, library copies
 npm run serve        # http://localhost:8080  (or just open index.html)
 npm test             # unit tests for every tool
@@ -54,18 +54,18 @@ npm run verify       # everything CI runs: sync check, structure check, offline 
 
 Useful commands:
 
-| Command                                                  | Purpose                                                         |
-| -------------------------------------------------------- | --------------------------------------------------------------- |
-| `npm run serve`                                          | Local static server (zero dependencies)                         |
-| `npm test`                                               | Run all unit tests (Node's built-in test runner)                |
-| `npm run lint` / `npm run format`                        | ESLint / Prettier                                               |
-| `npm run sync`                                           | Copy `shared/` files into each tool (`check:sync` verifies)     |
-| `npm run vendor`                                         | Refresh bundled third-party libraries from `node_modules`       |
-| `npm run check:offline`                                  | Fail if any page loads something from the internet              |
-| `npm run check:structure`                                | Enforce conventions (required files, README sections, CSP, ...) |
-| `npm run build`                                          | Assemble the deployable site in `_site/`                        |
-| `npm run new-tool -- my-tool "My Tool" "What it does"`   | Scaffold an eleventh tool                                       |
-| `npm run export-tool -- pdf-toolkit ../pdf-toolkit-repo` | Turn one tool into its own repository                           |
+| Command                                                | Purpose                                                         |
+| ------------------------------------------------------ | --------------------------------------------------------------- |
+| `npm run serve`                                        | Local static server (zero dependencies)                         |
+| `npm test`                                             | Run all unit tests (Node's built-in test runner)                |
+| `npm run lint` / `npm run format`                      | ESLint / Prettier                                               |
+| `npm run sync`                                         | Copy `shared/` files into each tool (`check:sync` verifies)     |
+| `npm run vendor`                                       | Refresh bundled third-party libraries from `node_modules`       |
+| `npm run check:offline`                                | Fail if any page loads something from the internet              |
+| `npm run check:structure`                              | Enforce conventions (required files, README sections, CSP, ...) |
+| `npm run build`                                        | Assemble the deployable site in `_site/`                        |
+| `npm run new-tool -- my-tool "My Tool" "What it does"` | Scaffold an eleventh tool                                       |
+| `npm run export-tool -- mail-merge ../mail-merge-repo` | Turn one tool into its own repository                           |
 
 ### Repository layout
 
@@ -121,4 +121,4 @@ Contributions are welcome at every level - fixing a typo, adding a test, improvi
 
 ## License
 
-[MIT](LICENSE). Bundled third-party libraries keep their own licenses (listed in each tool's `vendor/README.md`): pdf-lib (MIT), SheetJS Community Edition (Apache-2.0), PDF.js (Apache-2.0), qrcode-generator (MIT), JsBarcode (MIT). "QR Code" is a registered trademark of DENSO WAVE INCORPORATED.
+[MIT](LICENSE). Bundled third-party libraries keep their own licenses (listed in each tool's `vendor/README.md`): pdf-lib (MIT), fflate (MIT), SheetJS Community Edition (Apache-2.0) and PDF.js (Apache-2.0). The passphrase word list in Password & ID Generator is the EFF Short Wordlist #1, licensed CC BY 3.0 US (attribution in that tool's README and data file).

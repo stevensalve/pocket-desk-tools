@@ -14,9 +14,11 @@ These tools process files that users open on their own computer. The main risks 
 
 ## Notes for specific components
 
-- **PDF.js (PDF Fill & Sign)** is pinned to 3.11.174 and always opened with `isEvalSupported: false`; the page's CSP forbids `eval` as well. This mitigates CVE-2024-4367, the font-handling code-execution issue that affects PDF.js 4.1.392 and earlier (fixed upstream in 4.2.67). Upgrading to a fixed release would require moving to its ES-module build, which browsers do not allow from `file://`, so the pin plus mitigations is deliberate. It is reviewed whenever dependencies are updated.
+- **PDF.js (PDF Redact & Stamp)** is pinned to 3.11.174 and always opened with `isEvalSupported: false`; the page's CSP forbids `eval` as well. This mitigates CVE-2024-4367, the font-handling code-execution issue that affects PDF.js 4.1.392 and earlier (fixed upstream in 4.2.67). Upgrading to a fixed release would require moving to its ES-module build, which browsers do not allow from `file://`, so the pin plus mitigations is deliberate. It is reviewed whenever dependencies are updated.
 - **SheetJS** is taken from the vendor's own distribution (`cdn.sheetjs.com`, version 0.20.3) because the copy on npm is outdated and known to be vulnerable.
-- **Focus Desk and Document Generator** store data in `localStorage`. Imported backups and drafts are validated and sanitised before use, and user text is only ever written with `textContent`.
+- **Meeting Cost Timer** stores its finished-meeting log in `localStorage`. The log is validated and sanitised on every read, and user text is only ever written with `textContent`.
+- **Diagram Sketcher** builds its on-screen drawing with DOM calls (never from strings) and escapes all text in exported SVG; opened `.json` files are validated before use.
+- **PDF Redact & Stamp** removes redacted content by re-drawing those pages as images. Verify a redacted file (try to search or select text) before sharing it.
 
 ## Known `npm audit` findings
 

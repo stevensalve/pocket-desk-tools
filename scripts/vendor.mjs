@@ -26,23 +26,11 @@ const LIBS = {
     files: [['dist/xlsx.full.min.js', 'xlsx.full.min.js']],
     license: 'LICENSE',
   },
-  'qrcode-generator': {
-    pkg: 'qrcode-generator',
-    url: 'https://github.com/kazuhikoarase/qrcode-generator',
-    files: [
-      ['dist/qrcode.js', 'qrcode.js'],
-      ['dist/qrcode_UTF8.js', 'qrcode_UTF8.js'],
-    ],
-    // The npm package ships no license file; the MIT terms are stated in the
-    // header of each source file, so we write the standard MIT text with that notice.
-    license: null,
-    generatedLicense: 'Copyright (c) 2009 Kazuhiko Arase',
-  },
-  jsbarcode: {
-    pkg: 'jsbarcode',
-    url: 'https://github.com/lindell/JsBarcode',
-    files: [['dist/JsBarcode.all.min.js', 'JsBarcode.all.min.js']],
-    license: 'MIT-LICENSE.txt',
+  fflate: {
+    pkg: 'fflate',
+    url: 'https://github.com/101arrowz/fflate',
+    files: [['umd/index.js', 'fflate.js']],
+    license: 'LICENSE',
   },
   'pdfjs-dist': {
     pkg: 'pdfjs-dist',
@@ -57,16 +45,16 @@ const LIBS = {
 
 /** Which libraries each tool needs. */
 const TOOLS = {
-  'pdf-toolkit': ['pdf-lib'],
-  'image-tools': ['pdf-lib'],
-  'sheet-cleaner': ['sheetjs'],
-  'file-converter': ['sheetjs', 'pdf-lib'],
-  'qr-barcode-maker': ['qrcode-generator', 'jsbarcode'],
-  'text-toolkit': [],
-  'office-calculators': [],
-  'doc-generator': ['pdf-lib'],
-  'pdf-fill-sign': ['pdf-lib', 'pdfjs-dist'],
-  'focus-desk': [],
+  'mail-merge': ['sheetjs', 'pdf-lib', 'fflate'],
+  'pdf-redact-stamp': ['pdf-lib', 'pdfjs-dist'],
+  'meeting-actions': [],
+  'timezone-planner': [],
+  'password-id-generator': [],
+  'calendar-planner': ['pdf-lib'],
+  'scan-organiser': ['pdf-lib', 'fflate'],
+  'sheet-diff': ['sheetjs'],
+  'diagram-sketcher': [],
+  'meeting-cost-timer': [],
 };
 
 const MIT_TEXT = (notice) => `MIT License

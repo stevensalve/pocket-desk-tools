@@ -39,11 +39,11 @@ index.html  ->  js/app.js  ->  js/core.js
 - `app.js` is intentionally thin: read inputs, call core, render results or the error message.
 - Dependencies flow one way: UI depends on core, never the reverse.
 
-Some tools split further where it pays off: Document Generator has `pdf.js` (layout) separate from `core.js` (maths), and Sheet Cleaner keeps SheetJS out of `core.js` entirely (it only touches files in `app.js`).
+Some tools split further where it pays off: Password & ID Generator keeps its word list in a separate data file (`wordlist.js`), and Spreadsheet Diff and Mail Merge keep SheetJS out of the comparison/merge logic (it only reads files in `app.js`). Tools that need a library inside `core.js` (pdf-lib, fflate) receive it as an argument so Node tests can pass the real one.
 
 ### Immutable data and plain objects
 
-Core functions return new objects instead of editing their arguments. That makes Undo (Sheet Cleaner), state persistence (Focus Desk) and testing trivial. Data is plain objects/arrays so it can be serialised as JSON.
+Core functions return new objects instead of editing their arguments. That makes Undo (Diagram Sketcher), state persistence (Meeting Cost Timer) and testing trivial. Data is plain objects/arrays so it can be serialised as JSON.
 
 ### Self-contained tool folders + a `shared/` source of truth
 
@@ -53,13 +53,12 @@ Each tool must work when its folder is copied alone, so each has its own `css/th
 
 `scripts/vendor.mjs` copies exact, pinned builds from `node_modules` into each tool's `vendor/` along with license files and a generated `vendor/README.md` listing versions. No CDN means the tools work offline and no third party can change the code under us.
 
-| Library          | Used by                                                                       | Why                                                                                         |
-| ---------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| pdf-lib          | PDF Toolkit, Image Tools, File Converter, Document Generator, PDF Fill & Sign | Create and edit PDFs in pure JavaScript                                                     |
-| SheetJS (CE)     | Sheet Cleaner, File Converter                                                 | Read/write Excel and CSV                                                                    |
-| PDF.js 3.11.174  | PDF Fill & Sign                                                               | Draw PDF pages (3.x is the last line with a classic-script build that works from `file://`) |
-| qrcode-generator | QR & Barcode Maker                                                            | QR matrix (we render the SVG ourselves)                                                     |
-| JsBarcode        | QR & Barcode Maker                                                            | Barcode drawing                                                                             |
+| Library         | Used by                                                                  | Why                                                                                           |
+| --------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| pdf-lib 1.17.1  | Mail Merge, PDF Redact & Stamp, Calendar & Planner Maker, Scan Organiser | Create and edit PDFs in pure JavaScript                                                       |
+| SheetJS (CE)    | Mail Merge, Spreadsheet Diff                                             | Read Excel and CSV                                                                            |
+| fflate 0.8.3    | Mail Merge, Scan Organiser                                               | Build ZIP files                                                                               |
+| PDF.js 3.11.174 | PDF Redact & Stamp                                                       | Draw PDF pages and find text (3.x is the last line with a classic-script build for `file://`) |
 
 ### Content-Security-Policy on every page
 
@@ -71,7 +70,7 @@ Users open files with `<input type="file">` or drag and drop, read them with `Fi
 
 ### Storage
 
-Only Focus Desk and Document Generator persist data, in `localStorage`, always inside `try/catch` (storage can be disabled), always validated on load, and always with an explicit export/import for backups.
+Only Meeting Cost Timer persists data (its finished-meeting log), in `localStorage`, always inside `try/catch` (storage can be disabled), always validated on load, and always with an explicit export/import for backups.
 
 ### Accessibility
 

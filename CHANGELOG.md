@@ -9,7 +9,7 @@ All notable changes are documented here. The format follows [Keep a Changelog](h
 ### Added
 
 - Launcher page with search.
-- Ten offline tools: PDF Toolkit, Image Tools, Sheet Cleaner, File Converter, QR & Barcode Maker, Text Toolkit, Office Calculators, Document Generator, PDF Fill & Sign, Focus Desk.
+- Ten offline tools: Mail Merge, PDF Redact & Stamp, Meeting Actions, Timezone Planner, Password & ID Generator, Calendar & Planner Maker, Scan Organiser, Spreadsheet Diff, Diagram Sketcher, Meeting Cost Timer.
 - Shared theme (light/dark) and helper library, synced into each tool.
 - Unit tests for every tool's logic, repository checks (offline guarantee, structure, shared-file sync), ESLint and Prettier.
 - GitHub Actions for CI and GitHub Pages deployment; Dependabot configuration; issue and pull-request templates.

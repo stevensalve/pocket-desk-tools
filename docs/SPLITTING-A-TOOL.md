@@ -3,11 +3,11 @@
 Every folder in `tools/` is self-contained, so any of them can live in a repository of its own (for example if a team only wants the PDF tools).
 
 ```bash
-npm run export-tool -- pdf-toolkit ../pdf-toolkit-repo
-cd ../pdf-toolkit-repo
+npm run export-tool -- mail-merge ../mail-merge-repo
+cd ../mail-merge-repo
 npm install        # installs the test-time dependency (pdf-lib)
 npm test           # runs the tool's unit tests
-git init && git add . && git commit -m "feat: initial import from offline-office-toolkit"
+git init && git add . && git commit -m "feat: initial import from pocket-desk-tools"
 ```
 
 What the export contains:
@@ -23,4 +23,4 @@ After exporting:
 1. Replace relative links that point into the monorepo (for example `../../README.md` in the tool README) with your own.
 2. Enable Pages (_Settings -> Pages -> Source: GitHub Actions_) to publish `index.html` at the repository's site URL.
 
-If you want to keep the Git history of the folder instead, use `git subtree split --prefix=tools/pdf-toolkit -b pdf-toolkit-only` and push that branch to a new repository.
+If you want to keep the Git history of the folder instead, use `git subtree split --prefix=tools/mail-merge -b mail-merge-only` and push that branch to a new repository.

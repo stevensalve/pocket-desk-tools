@@ -23,7 +23,7 @@ for (const tool of readdirSync(join(root, 'tools'))) {
   }
 }
 const pageGlobals = Object.fromEntries(
-  ['OT', 'PDFLib', 'XLSX', 'pdfjsLib', 'JsBarcode', 'qrcode', ...toolGlobals].map((name) => [name, 'readonly']),
+  ['OT', 'PDFLib', 'XLSX', 'pdfjsLib', 'fflate', 'PwWords', ...toolGlobals].map((name) => [name, 'readonly']),
 );
 
 export default [

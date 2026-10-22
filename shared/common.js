@@ -1,5 +1,5 @@
 /**
- * Offline Office Toolkit - shared helpers (namespace `OT`).
+ * Pocket Desk Tools - shared helpers (namespace `OT`).
  *
  * Written as a classic script + CommonJS hybrid so it works when a page is
  * opened straight from disk (file://) AND can be unit-tested in Node.

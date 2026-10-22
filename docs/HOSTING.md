@@ -12,7 +12,7 @@ The toolkit is a folder of static files. "Hosting" means putting them where peop
 Notes:
 
 - The workflow needs no tokens or secrets; it uses GitHub's built-in OIDC permissions (`pages: write`, `id-token: write`).
-- All links are relative, so the site works under a sub-path such as `/offline-office-toolkit/`.
+- All links are relative, so the site works under a sub-path such as `/pocket-desk-tools/`.
 - To publish a single tool as its own site, use `npm run export-tool` (see [SPLITTING-A-TOOL.md](SPLITTING-A-TOOL.md)).
 - Using a custom domain: add a `CNAME` file via the repository's Pages settings.
 
@@ -43,8 +43,8 @@ Download the ZIP, unzip, open `index.html`. This is the "offline" mode in the ma
 
 Everything works from `file://`, with two small differences worth knowing:
 
-- **PDF Fill & Sign**: browsers do not allow Web Workers from `file://`, so PDF.js runs its worker inside the page (you will see a console note "Setting up fake worker"). It works, but a very large PDF can make the page feel slow. When hosted over HTTP(S) a real worker is used.
-- **Focus Desk / Document Generator**: browser storage for `file://` pages is handled differently by different browsers (some share it for all local files, some separate it per file). Hosting gives the most predictable behaviour. Both tools have backup/export buttons for this reason.
+- **PDF Redact & Stamp**: browsers do not allow Web Workers from `file://`, so PDF.js runs its worker inside the page (you will see a console note "Setting up fake worker"). It works, but a very large PDF can make the page feel slow. When hosted over HTTP(S) a real worker is used.
+- **Meeting Cost Timer**: browser storage for `file://` pages is handled differently by different browsers (some share it for all local files, some separate it per file), so the saved meeting log may not carry over between a downloaded copy and a hosted one. The log has a CSV download for this reason.
 
 ## Checking a deployment
 

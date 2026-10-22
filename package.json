@@ -1,7 +1,7 @@
 {
-  "name": "offline-office-toolkit",
+  "name": "pocket-desk-tools",
   "version": "1.0.0",
-  "description": "Ten small, privacy-friendly office tools that run in the browser and work fully offline.",
+  "description": "Ten small, privacy-friendly desk tools (mail merge, PDF redaction, scans, diagrams and more) that run in the browser and work fully offline.",
   "private": true,
   "license": "MIT",
   "type": "commonjs",
@@ -27,22 +27,23 @@
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "eslint": "^9.0.0",
+    "fflate": "0.8.3",
     "globals": "^15.0.0",
-    "jsbarcode": "3.12.3",
     "pdf-lib": "1.17.1",
     "pdfjs-dist": "3.11.174",
     "prettier": "^3.3.0",
-    "qrcode-generator": "2.0.4",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "keywords": [
     "offline",
     "privacy",
+    "mail-merge",
     "pdf",
-    "excel",
-    "csv",
-    "qr-code",
-    "invoice",
+    "redact",
+    "timezone",
+    "password-generator",
+    "calendar",
+    "diagram",
     "browser-tools",
     "no-build"
   ]

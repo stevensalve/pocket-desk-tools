@@ -28,5 +28,5 @@ for (const item of ['index.html', 'LICENSE', 'shared/theme.css', 'site']) {
 copyDir(join(root, 'tools'), join(out, 'tools'), (src) => !relative(root, src).split(sep).includes('tests'));
 writeFileSync(join(out, '.nojekyll'), '');
 
-if (!existsSync(join(out, 'tools', 'pdf-toolkit', 'index.html'))) throw new Error('build failed: tools were not copied');
+if (!existsSync(join(out, 'tools', 'mail-merge', 'index.html'))) throw new Error('build failed: tools were not copied');
 console.log('site built in _site/');

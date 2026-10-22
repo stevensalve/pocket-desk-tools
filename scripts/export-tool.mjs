@@ -2,7 +2,7 @@
 /**
  * Exports one tool as a standalone repository folder (own package.json, CI,
  * GitHub Pages workflow and license), ready for `git init`.
- *   npm run export-tool -- pdf-toolkit ../pdf-toolkit-repo
+ *   npm run export-tool -- mail-merge ../mail-merge-repo
  */
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -30,10 +30,11 @@ mkdirSync(join(dest, 'scripts'), { recursive: true });
 // Test-time dependencies: the libraries the tool bundles in vendor/.
 const rootPkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
 const html = readFileSync(join(dest, 'index.html'), 'utf8') + readFileSync(join(dest, 'js/core.js'), 'utf8');
-const wanted = { 'pdf-lib': /pdf-lib/, xlsx: /xlsx/, pdfjs: /pdfjs/ };
+const wanted = { 'pdf-lib': /pdf-lib/, xlsx: /xlsx/, fflate: /fflate/ };
 const devDependencies = {};
 if (wanted['pdf-lib'].test(html)) devDependencies['pdf-lib'] = rootPkg.devDependencies['pdf-lib'];
 if (wanted.xlsx.test(html)) devDependencies.xlsx = rootPkg.devDependencies.xlsx;
+if (wanted.fflate.test(html)) devDependencies.fflate = rootPkg.devDependencies.fflate;
 
 writeFileSync(
   join(dest, 'package.json'),

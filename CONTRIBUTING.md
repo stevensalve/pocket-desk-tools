@@ -13,7 +13,7 @@ Thank you for helping! This project is deliberately small and approachable. You 
 
 ```bash
 git clone <your-fork-url>
-cd offline-office-toolkit
+cd pocket-desk-tools
 npm install
 npm run verify      # should pass before you change anything
 npm run serve       # preview at http://localhost:8080
@@ -24,7 +24,7 @@ You need Node.js 22+. Tools themselves run in the browser; Node is only for test
 ## Workflow
 
 1. Open (or find) an issue describing the change. For anything non-trivial, say you are working on it to avoid duplicate effort.
-2. Create a branch: `git checkout -b fix/pdf-toolkit-range-message`.
+2. Create a branch: `git checkout -b fix/mail-merge-empty-cell-message`.
 3. Make your change in small, focused commits.
 4. Add or update tests, run `npm run verify`.
 5. Open a pull request using the template. A maintainer will review; please be patient and open to feedback.
@@ -34,10 +34,10 @@ You need Node.js 22+. Tools themselves run in the browser; Node is only for test
 Use [Conventional Commits](https://www.conventionalcommits.org): `type(scope): summary`.
 
 ```text
-feat(sheet-cleaner): add "remove columns by name" action
-fix(pdf-fill-sign): keep signature inside page when zoomed
+feat(sheet-diff): add "ignore columns" option
+fix(pdf-redact-stamp): keep boxes aligned on rotated pages
 docs(readme): explain hosting on an intranet
-test(office-calculators): cover leap-day date differences
+test(timezone-planner): cover the autumn clock change
 ```
 
 Types: `feat`, `fix`, `docs`, `test`, `refactor`, `style`, `chore`, `ci`. The scope is a tool folder name or an area (`shared`, `scripts`, `docs`).

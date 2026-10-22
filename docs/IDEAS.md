@@ -4,44 +4,47 @@ Pick something, open an issue to say so, and follow [CONTRIBUTING.md](../CONTRIB
 
 ## Improvements to existing tools
 
-| Tool               | Task                                                                    | Level |
-| ------------------ | ----------------------------------------------------------------------- | ----- |
-| PDF Toolkit        | Page thumbnails in the Extract/Delete tabs (render with PDF.js)         | M     |
-| PDF Toolkit        | Add "Add page numbers" and "Add watermark text" tabs using pdf-lib      | J     |
-| Image Tools        | Manual crop box with draggable handles                                  | M     |
-| Image Tools        | "Strip metadata only" mode (re-encode losslessly where possible)        | M     |
-| Sheet Cleaner      | Column picker for "remove duplicates by several columns"                | J     |
-| Sheet Cleaner      | Keep number formats when exporting (detect date/number columns)         | M     |
-| File Converter     | Read/write Markdown tables                                              | J     |
-| File Converter     | Embed an open-licence Unicode font so text-to-PDF supports more scripts | M     |
-| QR & Barcode Maker | Batch mode: one QR per row of a pasted list, as a printable sheet       | M     |
-| Text Toolkit       | Word-level highlighting inside changed diff lines                       | M     |
-| Text Toolkit       | Slugify, remove accents, and "sort by length" line tools                | J     |
-| Office Calculators | Add a salary/tax-slab calculator with editable slabs                    | M     |
-| Office Calculators | EMI with part-prepayment                                                | M     |
-| Document Generator | Quotation / purchase-order document types                               | J     |
-| Document Generator | Several tax rates per document with a tax summary table                 | M     |
-| PDF Fill & Sign    | Show typed form-field values in the preview                             | M     |
-| PDF Fill & Sign    | Undo/redo for placed items                                              | J     |
-| Focus Desk         | Recurring tasks                                                         | M     |
-| Focus Desk         | Persist the running timer across reloads                                | J     |
-| All                | Translate tool text (an `i18n` helper in `shared/`)                     | M     |
-| All                | Playwright smoke tests for each page in CI                              | M     |
+| Tool                     | Task                                                                     | Level |
+| ------------------------ | ------------------------------------------------------------------------ | ----- |
+| Mail Merge               | Save and load a template (JSON) so a letter can be reused                | J     |
+| Mail Merge               | Simple formatting in the letter body (bold, headings)                    | M     |
+| PDF Redact & Stamp       | Undo/redo for redaction boxes                                            | J     |
+| PDF Redact & Stamp       | Remove metadata and attachments from the saved file as well              | M     |
+| Meeting Actions          | Support another language's date words (an `i18n` table for months/days)  | M     |
+| Meeting Actions          | Highlight the matched words in the notes box                             | M     |
+| Timezone Planner         | Per-city working days (for example Sunday-Thursday weeks)                | M     |
+| Timezone Planner         | Shareable link that stores the cities in the URL hash                    | J     |
+| Password & ID Generator  | Add a second, longer word list and a list picker                         | J     |
+| Password & ID Generator  | "Check my password" mode that estimates entropy of a typed password      | M     |
+| Calendar & Planner Maker | A starter set of public holidays per country as a downloadable text file | J     |
+| Calendar & Planner Maker | Habit-tracker and dotted-grid planner layouts                            | M     |
+| Scan Organiser           | Perspective correction (drag four corners)                               | M     |
+| Scan Organiser           | Optional OCR to produce a searchable PDF                                 | M     |
+| Spreadsheet Diff         | Choose columns to ignore                                                 | J     |
+| Spreadsheet Diff         | Export the highlighted comparison as an Excel file                       | M     |
+| Diagram Sketcher         | Multi-select and move several boxes                                      | M     |
+| Diagram Sketcher         | Elbow (right-angle) connectors                                           | M     |
+| Meeting Cost Timer       | Choose a rate by role from a saved list                                  | J     |
+| Meeting Cost Timer       | A full-screen "big display" mode for projecting in a meeting room        | J     |
+| All                      | Translate tool text (an `i18n` helper in `shared/`)                      | M     |
+| All                      | Playwright smoke tests for each page in CI                               | M     |
 
 ## New tool candidates
 
-| Idea                           | What it does                                                              | Level |
-| ------------------------------ | ------------------------------------------------------------------------- | ----- |
-| Meeting Notes to Actions       | Paste notes, extract lines starting with "TODO"/"Action" into a checklist | J     |
-| Timezone Planner               | Compare working hours across cities (uses `Intl`, no data download)       | J     |
-| Mail Merge                     | CSV + template text -> one file per row, or a combined PDF                | M     |
-| Password & ID Generator        | Strong random passwords and UUIDs with the Web Crypto API                 | J     |
-| Date & Calendar Maker          | Printable monthly/yearly calendars as PDF                                 | M     |
-| Receipt Scanner Organiser      | Rename/rotate/crop scanned receipts, export as one PDF                    | M     |
-| Diff for Spreadsheets          | Visual cell-by-cell diff of two Excel files                               | M     |
-| Org Chart / Flowchart Sketcher | Drag-and-drop boxes and arrows, export SVG/PNG                            | M     |
-| Redact PDF                     | Black-out rectangles that truly remove text (rasterise the page)          | M     |
-| Meeting Cost Timer             | Live cost of a meeting from attendee count and hourly rates               | J     |
+The ten tools in this repository came from an earlier list of ideas. Fresh candidates for an eleventh tool:
+
+| Idea                          | What it does                                                           | Level |
+| ----------------------------- | ---------------------------------------------------------------------- | ----- |
+| Regex Tester                  | Try a pattern against sample text with highlighted matches             | J     |
+| Cron Explainer                | Translate a cron schedule into plain words and show the next runs      | J     |
+| Random Picker & Team Splitter | Pick a name, draw a winner, split a list into balanced teams           | J     |
+| Image Metadata Viewer         | Show and strip EXIF data (location, camera) from photos                | M     |
+| Gantt Chart Maker             | Tasks and dates to a printable timeline (SVG/PDF)                      | M     |
+| Resume / CV Builder           | Fill a form, get a clean one-page PDF                                  | M     |
+| SOP / Checklist Builder       | Turn steps into a printable checklist or a runbook page                | J     |
+| Markdown to PDF               | Render Markdown to a styled PDF without a server                       | M     |
+| JSON / YAML Formatter         | Validate, pretty-print and convert between JSON and YAML               | J     |
+| Reconciliation Helper         | Match two lists of amounts (bank vs ledger) and show what is left over | M     |
 
 ## Repository and quality
 
