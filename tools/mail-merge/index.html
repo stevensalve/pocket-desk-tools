@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Mail Merge - one personalised letter per spreadsheet row (offline)</title>
+    <meta
+      name="description"
+      content="Merge a spreadsheet with a letter template into personalised PDFs or e-mail-ready text. Runs in your browser; your contact list is never uploaded."
+    />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="site">
+        <div>
+          <h1>Mail Merge</h1>
+          <p>One personalised letter or message for every row of your spreadsheet.</p>
+        </div>
+        <span class="badge">Works offline - your list never leaves this device</span>
+      </header>
+
+      <section class="card" aria-labelledby="h-data">
+        <h2 id="h-data">1. Your list</h2>
+        <label class="dropzone" id="drop">
+          Drop an Excel (.xlsx, .xls) or CSV file here, or click to choose
+          <input type="file" id="file-input" accept=".xlsx,.xls,.xlsm,.csv,.tsv,.txt" />
+        </label>
+        <div class="row meta" id="sheet-row" hidden>
+          <div>
+            <label for="sheet">Sheet</label>
+            <select id="sheet"></select>
+          </div>
+          <p class="hint" id="data-info"></p>
+        </div>
+        <div class="table-wrap" id="data-preview" hidden></div>
+        <p class="status" id="data-status" role="status"></p>
+      </section>
+
+      <section class="card" aria-labelledby="h-template">
+        <h2 id="h-template">2. Your template</h2>
+        <p class="hint">
+          Write the message once. Put a column name in double curly brackets where each person's details should go, for example
+          <code>Dear {{First Name}},</code>. Add a fallback after a bar for empty cells: <code>{{Title|friend}}</code>. Also available:
+          <code>{{today}}</code> and <code>{{row}}</code>.
+        </p>
+        <div class="chips" id="chips" aria-label="Insert a column"></div>
+        <label for="template">Message</label>
+        <textarea id="template" rows="10" spellcheck="true">
+Dear {{First Name|friend}},
+
+Thank you for your support this year.
+
+Kind regards,
+Your name</textarea>
+        <div class="grid">
+          <div>
+            <label for="subject">E-mail subject (optional)</label>
+            <input type="text" id="subject" value="A note for {{First Name|you}}" />
+          </div>
+          <div>
+            <label for="email-col">E-mail address column (optional)</label>
+            <select id="email-col">
+              <option value="">(none)</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="h-preview">
+        <h2 id="h-preview">3. Check it</h2>
+        <div class="row">
+          <button type="button" id="prev" aria-label="Previous record" disabled>&larr;</button>
+          <span id="rec-label" aria-live="polite">No records yet</span>
+          <button type="button" id="next" aria-label="Next record" disabled>&rarr;</button>
+        </div>
+        <pre class="letter" id="preview" tabindex="0" aria-label="Preview of the merged message"></pre>
+        <p class="status" id="check-status" role="status"></p>
+      </section>
+
+      <section class="card" aria-labelledby="h-out">
+        <h2 id="h-out">4. Create the files</h2>
+        <div class="grid">
+          <div>
+            <label for="font">Font</label>
+            <select id="font">
+              <option value="helvetica">Sans-serif</option>
+              <option value="times">Serif</option>
+              <option value="courier">Monospace</option>
+            </select>
+          </div>
+          <div><label for="size">Font size</label><input type="number" id="size" value="11" min="7" max="24" /></div>
+          <div>
+            <label for="page">Page</label>
+            <select id="page">
+              <option value="a4">A4</option>
+              <option value="letter">US Letter</option>
+            </select>
+          </div>
+          <div>
+            <label for="pattern">File names (for the ZIP)</label>
+            <input type="text" id="pattern" value="letter-{{row}}" />
+            <p class="hint">Use columns here too, e.g. <code>{{Last Name}}-{{First Name}}</code>.</p>
+          </div>
+        </div>
+        <div class="row">
+          <button class="primary" id="out-pdf" disabled>One PDF (a page per person)</button>
+          <button id="out-zip" disabled>ZIP of separate PDFs</button>
+          <button id="out-csv" disabled>E-mail-ready CSV</button>
+        </div>
+        <p class="status" id="out-status" role="status"></p>
+      </section>
+
+      <footer class="site">
+        <a href="../../index.html">All tools</a> - MIT licensed - <a href="vendor/README.md">SheetJS, pdf-lib and fflate</a>
+      </footer>
+    </main>
+
+    <script src="vendor/xlsx.full.min.js"></script>
+    <script src="vendor/pdf-lib.min.js"></script>
+    <script src="vendor/fflate.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

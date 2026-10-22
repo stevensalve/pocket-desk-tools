@@ -1,0 +1,54 @@
+/* Scan Organiser - tool-specific styles. */
+.inline {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  font-weight: 400;
+}
+code {
+  padding: 0.05rem 0.3rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+ol.pages {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.75rem;
+}
+ol.pages li {
+  padding: 0.6rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+ol.pages canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 16rem;
+  margin: 0 auto 0.5rem;
+  background: #fff;
+  border: 1px solid var(--border);
+}
+ol.pages .name {
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 0.4rem;
+}
+ol.pages .tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+ol.pages .tools button {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+}
+ol.pages select {
+  margin-top: 0.4rem;
+}

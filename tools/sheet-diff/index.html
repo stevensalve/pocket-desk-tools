@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Spreadsheet Diff - compare two Excel or CSV files (offline)</title>
+    <meta
+      name="description"
+      content="See exactly which rows and cells changed between two spreadsheet versions. Runs offline in your browser; your files are never uploaded."
+    />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="site">
+        <div>
+          <h1>Spreadsheet Diff</h1>
+          <p>Compare two versions of a sheet and see what was added, removed or changed.</p>
+        </div>
+        <span class="badge">Works offline - your files never leave this device</span>
+      </header>
+
+      <section class="card" aria-labelledby="h-files">
+        <h2 id="h-files">1. Pick the two files</h2>
+        <div class="two">
+          <div>
+            <label class="dropzone" id="drop-a"
+              >Old version (A) - drop or click<input type="file" id="file-a" accept=".xlsx,.xls,.xlsm,.csv,.tsv,.txt"
+            /></label>
+            <label for="sheet-a">Sheet</label
+            ><select id="sheet-a" disabled></select>
+            <p class="hint" id="info-a">Nothing loaded.</p>
+          </div>
+          <div>
+            <label class="dropzone" id="drop-b"
+              >New version (B) - drop or click<input type="file" id="file-b" accept=".xlsx,.xls,.xlsm,.csv,.tsv,.txt"
+            /></label>
+            <label for="sheet-b">Sheet</label
+            ><select id="sheet-b" disabled></select>
+            <p class="hint" id="info-b">Nothing loaded.</p>
+          </div>
+        </div>
+        <p class="status" id="load-status" role="status"></p>
+      </section>
+
+      <section class="card" aria-labelledby="h-opt">
+        <h2 id="h-opt">2. How should rows be matched?</h2>
+        <div class="grid">
+          <div>
+            <label for="key">ID column</label>
+            <select id="key">
+              <option value="">(none - compare row 1 with row 1, and so on)</option>
+            </select>
+            <p class="hint">An ID column (like an employee number) lets rows be matched even if they were sorted differently.</p>
+          </div>
+          <div>
+            <label for="tol">Ignore number differences up to</label>
+            <input type="number" id="tol" value="0" min="0" step="any" />
+          </div>
+        </div>
+        <div class="checks">
+          <label><input type="checkbox" id="icase" /> Ignore upper/lower case</label>
+          <label><input type="checkbox" id="only" /> Show only differences</label>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="h-res">
+        <h2 id="h-res">3. Differences</h2>
+        <p class="status" id="summary" role="status">Load both files to compare.</p>
+        <p class="hint" id="cols-note"></p>
+        <div class="legend">
+          <span class="tag changed">changed</span><span class="tag added">only in B</span><span class="tag removed">only in A</span>
+        </div>
+        <div class="table-wrap">
+          <table id="result" hidden>
+            <thead id="r-head"></thead>
+            <tbody id="r-body"></tbody>
+          </table>
+        </div>
+        <div class="row"><button class="primary" id="dl" disabled>Download change report (CSV)</button></div>
+      </section>
+
+      <footer class="site"><a href="../../index.html">All tools</a> - MIT licensed - <a href="vendor/README.md">SheetJS</a></footer>
+    </main>
+    <script src="vendor/xlsx.full.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

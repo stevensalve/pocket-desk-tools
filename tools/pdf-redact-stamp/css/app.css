@@ -1,0 +1,68 @@
+/* PDF Redact & Stamp - tool-specific styles. */
+.notice {
+  border-left: 4px solid var(--primary);
+}
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+}
+
+.viewer {
+  max-height: 75vh;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  overflow: auto;
+  background: #6b7280;
+  border-radius: var(--radius);
+}
+
+.page-stack {
+  position: relative;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.page-stack canvas {
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.box {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.78);
+  outline: 2px solid #d32f2f;
+}
+
+.box.draft {
+  background: rgba(211, 47, 47, 0.25);
+  pointer-events: none;
+}
+
+.box button {
+  position: absolute;
+  top: -11px;
+  right: -11px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1;
+  color: #000;
+  background: #fff;
+  border: 1px solid #555;
+  border-radius: 50%;
+  cursor: pointer;
+}

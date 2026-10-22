@@ -1,0 +1,53 @@
+/* Timezone Planner - tool-specific styles. */
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+#grid-table td {
+  text-align: center;
+  white-space: nowrap;
+  padding: 0.3rem 0.5rem;
+}
+#grid-table tbody tr {
+  cursor: pointer;
+}
+#grid-table tbody tr:hover {
+  outline: 2px solid var(--accent, #2563eb);
+}
+#grid-table tbody tr.picked {
+  outline: 3px solid var(--accent, #2563eb);
+  font-weight: 700;
+}
+.q-work {
+  background: #d6f5dd;
+  color: #0b3d1a;
+}
+.q-edge {
+  background: #fdecc8;
+  color: #5a3b00;
+}
+.q-off {
+  background: #e6e6ea;
+  color: #444;
+}
+.next-day {
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
+}
+pre.letter {
+  margin: 0.75rem 0;
+  padding: 1rem;
+  overflow: auto;
+  font: 0.95rem/1.5 var(--font);
+  white-space: pre-wrap;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+td input[type='time'] {
+  min-width: 6.5rem;
+}

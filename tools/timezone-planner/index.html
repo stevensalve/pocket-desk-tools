@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Timezone Planner - find a meeting time that suits everyone (offline)</title>
+    <meta
+      name="description"
+      content="Compare time zones, see overlapping working hours and copy a meeting time for every city. Handles daylight saving. Runs offline in your browser."
+    />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="site">
+        <div>
+          <h1>Timezone Planner</h1>
+          <p>Find a meeting time that works in every city, with daylight saving handled.</p>
+        </div>
+        <span class="badge">Works offline - nothing is sent anywhere</span>
+      </header>
+
+      <section class="card" aria-labelledby="h-places">
+        <h2 id="h-places">1. Who is where?</h2>
+        <div class="row">
+          <div>
+            <label for="city">Add a city</label>
+            <select id="city"></select>
+          </div>
+          <button id="add-city" type="button">Add</button>
+          <div>
+            <label for="custom">Or type a zone name</label>
+            <input type="text" id="custom" list="zone-list" placeholder="e.g. Europe/Zurich" />
+            <datalist id="zone-list"></datalist>
+          </div>
+          <button id="add-custom" type="button">Add</button>
+        </div>
+        <p class="status" id="place-status" role="status"></p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Place</th>
+                <th scope="col">Working hours</th>
+                <th scope="col">Local time now</th>
+                <th scope="col"><span class="sr">Remove</span></th>
+              </tr>
+            </thead>
+            <tbody id="places"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="h-when">
+        <h2 id="h-when">2. When?</h2>
+        <div class="grid">
+          <div><label for="date">Date (in the first city's clock)</label><input type="date" id="date" /></div>
+          <div>
+            <label for="dur">Meeting length</label>
+            <select id="dur">
+              <option value="30">30 minutes</option>
+              <option value="45">45 minutes</option>
+              <option value="60" selected>1 hour</option>
+              <option value="90">90 minutes</option>
+              <option value="120">2 hours</option>
+            </select>
+          </div>
+        </div>
+        <p class="status" id="overlap" role="status"></p>
+        <div class="table-wrap">
+          <table id="grid-table">
+            <caption class="sr">
+              Start times in each place. Green is working hours, amber is within an hour of it, grey is outside.
+            </caption>
+            <thead id="grid-head"></thead>
+            <tbody id="grid-body"></tbody>
+          </table>
+        </div>
+        <p class="hint">Click a row to pick that start time. Green = working hours, amber = early/late, grey = night.</p>
+      </section>
+
+      <section class="card" aria-labelledby="h-share">
+        <h2 id="h-share">3. Share it</h2>
+        <label for="title">Meeting title</label>
+        <input type="text" id="title" placeholder="Planning call" />
+        <pre class="letter" id="invite" aria-live="polite">Pick a start time above.</pre>
+        <div class="row">
+          <button class="primary" id="copy" disabled>Copy text</button>
+          <button id="ics" disabled>Download calendar (.ics)</button>
+        </div>
+        <p class="status" id="share-status" role="status"></p>
+      </section>
+
+      <footer class="site"><a href="../../index.html">All tools</a> - MIT licensed - Uses your browser's built-in time zone data</footer>
+    </main>
+    <script src="js/common.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

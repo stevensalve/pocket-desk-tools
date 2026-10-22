@@ -1,0 +1,67 @@
+/* Diagram Sketcher - tool-specific styles. */
+.container.wide {
+  max-width: 72rem;
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.toolbar .inline {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+  font-weight: 400;
+}
+button[aria-pressed='true'] {
+  background: var(--accent, #2563eb);
+  color: #fff;
+  border-color: transparent;
+}
+#canvas {
+  display: block;
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  touch-action: none;
+  cursor: default;
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+#canvas.connecting {
+  cursor: crosshair;
+}
+#canvas g.node {
+  cursor: grab;
+}
+#canvas g.node.sel > :first-child,
+#canvas g.edge.sel line {
+  stroke: #2563eb;
+  stroke-width: 3;
+}
+#canvas g.node.pending > :first-child {
+  stroke: #d97706;
+  stroke-width: 3;
+  stroke-dasharray: 5 3;
+}
+label.file {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fff;
+}
+label.file input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+label.file:focus-within {
+  outline: 2px solid var(--accent, #2563eb);
+}

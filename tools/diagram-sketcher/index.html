@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Diagram Sketcher - flowcharts and org charts (offline)</title>
+    <meta
+      name="description"
+      content="Draw flowcharts and org charts in your browser: drag boxes, connect them, or paste an indented outline. Export SVG or PNG. Works offline."
+    />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <main class="container wide">
+      <header class="site">
+        <div>
+          <h1>Diagram Sketcher</h1>
+          <p>Flowcharts and org charts without an account. Drag, connect, export.</p>
+        </div>
+        <span class="badge">Works offline - nothing is uploaded</span>
+      </header>
+
+      <section class="card" aria-labelledby="h-outline">
+        <h2 id="h-outline">Quick start: type an outline</h2>
+        <details>
+          <summary>Build a chart from indented text</summary>
+          <label for="outline">One item per line; indent with 2 spaces for each level down.</label>
+          <textarea id="outline" rows="6" placeholder="CEO&#10;  CTO&#10;    Dev lead&#10;  CFO"></textarea>
+          <div class="row"><button id="make-tree" type="button">Create chart from outline</button></div>
+          <p class="status" id="outline-status" role="status"></p>
+        </details>
+      </section>
+
+      <section class="card" aria-labelledby="h-edit">
+        <h2 id="h-edit">Canvas</h2>
+        <div class="toolbar" role="toolbar" aria-label="Diagram tools">
+          <button id="add" type="button">Add box</button>
+          <button id="connect" type="button" aria-pressed="false">Connect</button>
+          <button id="del" type="button" disabled>Delete selected</button>
+          <label class="inline"
+            >Shape
+            <select id="shape">
+              <option value="box">Box</option>
+              <option value="round">Rounded</option>
+              <option value="ellipse">Oval</option>
+              <option value="diamond">Diamond</option>
+            </select></label
+          >
+          <label class="inline"
+            >Colour
+            <select id="color"></select
+          ></label>
+          <label class="inline"><input type="checkbox" id="snap" checked /> Snap to grid</label>
+          <button id="undo" type="button" disabled>Undo</button>
+        </div>
+        <label for="text">Text of the selected box or arrow (Shift+Enter adds a new line)</label>
+        <textarea id="text" rows="2" disabled></textarea>
+        <p class="hint" id="help">
+          Click "Add box", or double-click the canvas. Drag boxes to move them. Choose "Connect" then click two boxes to draw an arrow.
+        </p>
+        <svg id="canvas" width="100%" height="520" role="application" aria-label="Diagram canvas" tabindex="0"></svg>
+      </section>
+
+      <section class="card" aria-labelledby="h-save">
+        <h2 id="h-save">Save and share</h2>
+        <div class="row">
+          <button class="primary" id="dl-svg" type="button">Download SVG</button>
+          <button id="dl-png" type="button">Download PNG</button>
+          <button id="dl-json" type="button">Save to edit later (.json)</button>
+          <label class="file">Open saved file<input type="file" id="open" accept=".json,application/json" /></label>
+          <button id="clear" type="button">Start over</button>
+        </div>
+        <p class="status" id="status" role="status"></p>
+      </section>
+
+      <footer class="site"><a href="../../index.html">All tools</a> - MIT licensed</footer>
+    </main>
+    <script src="js/common.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

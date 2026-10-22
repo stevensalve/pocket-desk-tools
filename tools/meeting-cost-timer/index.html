@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Meeting Cost Timer - see what a meeting costs as it runs (offline)</title>
+    <meta
+      name="description"
+      content="A live cost meter for meetings: add attendees and hourly rates, press start, watch the cost tick up. Runs offline; nothing is sent anywhere."
+    />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="site">
+        <div>
+          <h1>Meeting Cost Timer</h1>
+          <p>Add who is in the room, press start, and watch what the meeting costs.</p>
+        </div>
+        <span class="badge">Works offline - rates stay on this device</span>
+      </header>
+
+      <section class="card" aria-labelledby="h-who">
+        <h2 id="h-who">1. Who is attending?</h2>
+        <p class="hint">
+          Use averages if you prefer, e.g. 5 people at 60 per hour. Hourly rate = yearly pay or cost divided by about 1,800 working hours.
+        </p>
+        <div class="grid">
+          <div><label for="symbol">Currency symbol</label><input type="text" id="symbol" value="$" maxlength="4" /></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Group (optional name)</th>
+                <th scope="col">People</th>
+                <th scope="col">Hourly rate each</th>
+                <th scope="col"><span class="sr">Remove</span></th>
+              </tr>
+            </thead>
+            <tbody id="groups"></tbody>
+          </table>
+        </div>
+        <div class="row"><button id="add-group" type="button">Add another group</button></div>
+        <p class="status" id="who-status" role="status"></p>
+      </section>
+
+      <section class="card" aria-labelledby="h-meter">
+        <h2 id="h-meter">2. Run the meeting</h2>
+        <div class="meter" aria-live="off">
+          <div class="big" id="cost" aria-label="Cost so far">0.00</div>
+          <div class="time" id="time" aria-label="Time elapsed">0:00</div>
+          <div class="rate" id="rate"></div>
+        </div>
+        <div class="row">
+          <button class="primary" id="start" type="button">Start</button>
+          <button id="pause" type="button" disabled>Pause</button>
+          <button id="finish" type="button" disabled>Finish and log</button>
+          <button id="reset" type="button">Reset</button>
+        </div>
+        <label for="title">Meeting name (for the log)</label>
+        <input type="text" id="title" maxlength="80" placeholder="Weekly sync" />
+        <p class="status" id="run-status" role="status"></p>
+      </section>
+
+      <section class="card" aria-labelledby="h-year">
+        <h2 id="h-year">3. What if it repeats?</h2>
+        <div class="grid">
+          <div>
+            <label for="plan-min">Planned length (minutes)</label><input type="number" id="plan-min" value="60" min="1" max="600" />
+          </div>
+          <div>
+            <label for="freq">How often</label>
+            <select id="freq">
+              <option value="once">Once</option>
+              <option value="daily">Every working day</option>
+              <option value="weekly" selected>Weekly</option>
+              <option value="biweekly">Every two weeks</option>
+              <option value="monthly">Monthly</option>
+              <option value="quarterly">Quarterly</option>
+            </select>
+          </div>
+        </div>
+        <p class="status" id="annual" role="status"></p>
+        <p class="hint" id="perspective"></p>
+      </section>
+
+      <section class="card" aria-labelledby="h-log">
+        <h2 id="h-log">Meeting log</h2>
+        <p class="hint">Finished meetings are saved in this browser only (not uploaded).</p>
+        <div class="table-wrap">
+          <table id="log-table" hidden>
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Meeting</th>
+                <th scope="col">Time</th>
+                <th scope="col">People</th>
+                <th scope="col">Cost</th>
+              </tr>
+            </thead>
+            <tbody id="log-body"></tbody>
+          </table>
+        </div>
+        <p class="status" id="log-total" role="status">No meetings logged yet.</p>
+        <div class="row">
+          <button id="log-csv" type="button" disabled>Download CSV</button><button id="log-clear" type="button" disabled>Clear log</button>
+        </div>
+      </section>
+
+      <footer class="site"><a href="../../index.html">All tools</a> - MIT licensed</footer>
+    </main>
+    <script src="js/common.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

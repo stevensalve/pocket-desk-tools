@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Password &amp; ID Generator - strong passwords, passphrases and IDs (offline)</title>
+    <meta
+      name="description"
+      content="Generate strong passwords, passphrases, PINs, tokens and UUIDs using your browser's secure random generator. Nothing is sent or stored."
+    />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="site">
+        <div>
+          <h1>Password &amp; ID Generator</h1>
+          <p>Strong passwords, easy-to-remember passphrases, PINs, tokens and unique IDs.</p>
+        </div>
+        <span class="badge">Works offline - nothing is sent or saved</span>
+      </header>
+
+      <section class="card" aria-labelledby="h-kind">
+        <h2 id="h-kind">1. What do you need?</h2>
+        <div class="tabs" role="tablist" aria-label="Kind of secret">
+          <button role="tab" id="tab-password" aria-controls="panel-password" aria-selected="true" type="button">Password</button>
+          <button role="tab" id="tab-passphrase" aria-controls="panel-passphrase" aria-selected="false" type="button">Passphrase</button>
+          <button role="tab" id="tab-pin" aria-controls="panel-pin" aria-selected="false" type="button">PIN</button>
+          <button role="tab" id="tab-id" aria-controls="panel-id" aria-selected="false" type="button">IDs &amp; tokens</button>
+        </div>
+
+        <div id="panel-password" role="tabpanel" aria-labelledby="tab-password">
+          <label for="pw-len">Length: <output id="pw-len-out">16</output></label>
+          <input type="range" id="pw-len" min="8" max="64" value="16" />
+          <div class="checks">
+            <label><input type="checkbox" id="pw-lower" checked /> a-z</label>
+            <label><input type="checkbox" id="pw-upper" checked /> A-Z</label>
+            <label><input type="checkbox" id="pw-digits" checked /> 0-9</label>
+            <label><input type="checkbox" id="pw-symbols" /> Symbols</label>
+            <label><input type="checkbox" id="pw-amb" /> Avoid look-alikes (l 1 I O 0)</label>
+          </div>
+        </div>
+
+        <div id="panel-passphrase" role="tabpanel" aria-labelledby="tab-passphrase" hidden>
+          <label for="pp-words">Words: <output id="pp-words-out">5</output></label>
+          <input type="range" id="pp-words" min="3" max="10" value="5" />
+          <div class="grid">
+            <div>
+              <label for="pp-sep">Separator</label>
+              <select id="pp-sep">
+                <option value="-">- (hyphen)</option>
+                <option value=" ">(space)</option>
+                <option value=".">. (dot)</option>
+                <option value="">(none)</option>
+              </select>
+            </div>
+          </div>
+          <div class="checks">
+            <label><input type="checkbox" id="pp-cap" /> Capitalise words</label>
+            <label><input type="checkbox" id="pp-num" /> Add a digit</label>
+          </div>
+          <p class="hint">Words come from the EFF short word list (1,296 words, CC BY 3.0 US).</p>
+        </div>
+
+        <div id="panel-pin" role="tabpanel" aria-labelledby="tab-pin" hidden>
+          <label for="pin-len">Digits: <output id="pin-len-out">6</output></label>
+          <input type="range" id="pin-len" min="4" max="12" value="6" />
+        </div>
+
+        <div id="panel-id" role="tabpanel" aria-labelledby="tab-id" hidden>
+          <label for="id-kind">Type</label>
+          <select id="id-kind">
+            <option value="uuid4">UUID v4 (random)</option>
+            <option value="uuid7">UUID v7 (sorted by time)</option>
+            <option value="short">Short readable ID (K7MQ-4XPD)</option>
+            <option value="hex">Hex token (32 bytes)</option>
+            <option value="url">URL-safe token (32 bytes)</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="h-out">
+        <h2 id="h-out">2. Your result</h2>
+        <label for="count">How many?</label>
+        <select id="count">
+          <option>1</option>
+          <option>5</option>
+          <option>10</option>
+          <option>25</option>
+        </select>
+        <div class="row">
+          <button class="primary" id="gen" type="button">Generate</button>
+          <button id="copy" type="button" disabled>Copy all</button>
+          <button id="dl" type="button" disabled>Download .txt</button>
+        </div>
+        <ol class="results" id="results" aria-live="polite"></ol>
+        <p class="status" id="strength" role="status"></p>
+        <meter id="meter" min="0" max="4" value="0" hidden></meter>
+        <p class="status" id="out-status" role="status"></p>
+      </section>
+
+      <footer class="site">
+        <a href="../../index.html">All tools</a> - MIT licensed - Word list: <a href="https://www.eff.org/dice">EFF</a>, CC BY 3.0 US
+      </footer>
+    </main>
+    <script src="js/common.js"></script>
+    <script src="js/wordlist.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

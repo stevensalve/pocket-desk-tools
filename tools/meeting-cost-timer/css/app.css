@@ -1,0 +1,36 @@
+/* Meeting Cost Timer - tool-specific styles. */
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.meter {
+  text-align: center;
+  padding: 1rem 0;
+}
+.meter .big {
+  font-size: clamp(2.5rem, 12vw, 5rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.meter .time {
+  font-size: 1.75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted, #555);
+}
+.meter .rate {
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  color: var(--muted, #555);
+}
+td input {
+  width: 100%;
+  min-width: 5rem;
+}
+td input[type='text'] {
+  min-width: 9rem;
+}

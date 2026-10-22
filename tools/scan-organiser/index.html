@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Scan Organiser - tidy phone photos of documents into a PDF (offline)</title>
+    <meta
+      name="description"
+      content="Turn photos of documents into a clean PDF or a ZIP of renamed images: crop, rotate, brighten, black-and-white, reorder. Runs offline in your browser."
+    />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="site">
+        <div>
+          <h1>Scan Organiser</h1>
+          <p>Photos of paperwork in, tidy PDF out. Crop, straighten, clean up and reorder.</p>
+        </div>
+        <span class="badge">Works offline - your photos never leave this device</span>
+      </header>
+
+      <section class="card" aria-labelledby="h-add">
+        <h2 id="h-add">1. Add your photos</h2>
+        <label class="dropzone" id="drop">
+          Drop photos here (JPG, PNG, WebP), or click to choose
+          <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" multiple />
+        </label>
+        <p class="status" id="add-status" role="status"></p>
+      </section>
+
+      <section class="card" aria-labelledby="h-pages">
+        <h2 id="h-pages">2. Tidy each page</h2>
+        <div class="row">
+          <div>
+            <label for="all-filter">Apply a look to all pages</label>
+            <select id="all-filter">
+              <option value="">(keep each as set)</option>
+              <option value="none">Original colours</option>
+              <option value="contrast">Brighter and clearer</option>
+              <option value="gray">Greyscale</option>
+              <option value="bw">Black and white (text documents)</option>
+            </select>
+          </div>
+          <label class="inline"><input type="checkbox" id="all-crop" /> Auto-crop all pages</label>
+        </div>
+        <ol class="pages" id="pages" aria-label="Pages"></ol>
+        <p class="hint" id="pages-hint">No pages yet.</p>
+      </section>
+
+      <section class="card" aria-labelledby="h-out">
+        <h2 id="h-out">3. Save</h2>
+        <div class="grid">
+          <div>
+            <label for="quality">Image size</label>
+            <select id="quality">
+              <option value="1600">Small (1600 px)</option>
+              <option value="2400" selected>Standard (2400 px)</option>
+              <option value="3200">Large (3200 px)</option>
+            </select>
+          </div>
+          <div>
+            <label for="page">PDF page</label>
+            <select id="page">
+              <option value="a4">A4</option>
+              <option value="letter">US Letter</option>
+              <option value="fit">Same size as image</option>
+            </select>
+          </div>
+          <div>
+            <label for="pattern">File names (ZIP)</label>
+            <input type="text" id="pattern" value="scan-{n}" />
+            <p class="hint">Use <code>{n}</code> for the page number and <code>{date}</code> for today.</p>
+          </div>
+        </div>
+        <div class="row">
+          <button class="primary" id="out-pdf" disabled>Download PDF</button>
+          <button id="out-zip" disabled>Download ZIP of images</button>
+        </div>
+        <p class="status" id="out-status" role="status"></p>
+      </section>
+
+      <footer class="site">
+        <a href="../../index.html">All tools</a> - MIT licensed - <a href="vendor/README.md">pdf-lib and fflate</a>
+      </footer>
+    </main>
+    <script src="vendor/pdf-lib.min.js"></script>
+    <script src="vendor/fflate.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
