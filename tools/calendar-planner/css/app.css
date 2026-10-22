@@ -1,0 +1,62 @@
+/* Calendar & Planner Maker - tool-specific styles. */
+.checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0.75rem 0;
+}
+.checks label {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+  font-weight: 400;
+}
+code {
+  padding: 0.05rem 0.3rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+#preview {
+  margin-bottom: 0.75rem;
+  overflow-x: auto;
+}
+#preview h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+table.cal {
+  width: 100%;
+  min-width: 28rem;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+table.cal th,
+table.cal td {
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.4rem;
+  height: 2.6rem;
+  vertical-align: top;
+  text-align: left;
+  font-size: 0.85rem;
+}
+table.cal th {
+  height: auto;
+  background: var(--bg);
+}
+table.cal td.out {
+  color: transparent;
+}
+table.cal td.wk {
+  background: var(--bg);
+}
+table.cal td.hol {
+  background: #dce8ff;
+}
+table.cal .hn {
+  display: block;
+  font-size: 0.65rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
